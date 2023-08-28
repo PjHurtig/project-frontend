@@ -2,6 +2,10 @@
     text-decoration: none;
 }
 
-img {
-    padding-right: 8px;
-}
+.NavLink {
+    padding: 5px;
+  }
+  
+  .Active i {
+    color: #2A9D8F;
+  }
