@@ -5,11 +5,14 @@ import { NavLink } from 'react-router-dom'
 import logo from '../assets/logo-blue.png'
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext'
 import styles from '../styles/NavBar.module.css'
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle'
 import Avatar from './Avatar'
 
 const NavBar = () => {
     const currentUser = useCurrentUser()
     const setCurrentUser = useSetCurrentUser();
+
+    const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
     const handleSignOut = async () => {
         try {
@@ -33,38 +36,38 @@ const NavBar = () => {
     const loggedInIcons = <>
 
       <NavDropdown 
-                    title={currentUser?.username} 
-                    id="basic-nav-dropdown"
-                    > 
-                        
-						<NavDropdown.Item>
-                            <NavLink to={`/profiles/${currentUser?.profile_id}`}>
-                            <Avatar 
-                            src={currentUser?.profile_image} 
-                            height={40} 
-                            />
-                            My Profile
-                            </NavLink>
-                        </NavDropdown.Item>
-                        
+        title={currentUser?.username} 
+        id="basic-nav-dropdown"
+        > 
+            
+            <NavDropdown.Item>
+                <NavLink to={`/profiles/${currentUser?.profile_id}`}>
+                <Avatar 
+                src={currentUser?.profile_image} 
+                height={40} 
+                />
+                My Profile
+                </NavLink>
+            </NavDropdown.Item>
+            
 
-						<NavDropdown.Item>Add Gear</NavDropdown.Item>
-						<NavDropdown.Item>Calendar</NavDropdown.Item>
-						<NavDropdown.Divider />
+            <NavDropdown.Item>Add Gear</NavDropdown.Item>
+            <NavDropdown.Item>Calendar</NavDropdown.Item>
+            <NavDropdown.Divider />
 
-                        
-                        <NavDropdown.Item>
-                            <NavLink 
-                            to="/"
-                            onClick={handleSignOut}
-                            >
-                            <i className="fas fa-sign-out-alt"></i>
-                            Sign Out
-                            </NavLink>
-                        </NavDropdown.Item>
-                        
-                        
-					</NavDropdown>
+            
+            <NavDropdown.Item>
+                <NavLink 
+                to="/"
+                onClick={handleSignOut}
+                >
+                <i className="fas fa-sign-out-alt"></i>
+                Sign Out
+                </NavLink>
+            </NavDropdown.Item>
+            
+            
+        </NavDropdown>
     
     </>
     const loggedOutIcons = 
@@ -92,6 +95,7 @@ const NavBar = () => {
 
   return (
     <Navbar 
+    expanded={expanded}
     bg="light" 
     expand="lg"
     className={styles.Navbar}
@@ -109,7 +113,10 @@ const NavBar = () => {
         
         {currentUser && addPostIcon}
 
-		<Navbar.Toggle aria-controls="basic-navbar-nav" />
+		<Navbar.Toggle 
+        ref={ref}
+        onClick={() => setExpanded(!expanded)}
+        aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="ml-auto">
 
