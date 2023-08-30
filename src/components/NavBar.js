@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom/cjs/react-router-dom'
+import { NavLink } from 'react-router-dom'
 import logo from '../assets/logo-blue.png'
 import styles from '../styles/NavBar.module.css'
 
@@ -11,7 +11,7 @@ const NavBar = () => {
     expand="lg"
     className={styles.Navbar}
     >
-			<Container>
+		<Container>
         <NavLink to="/">
           <Navbar.Brand>
             <img src={logo} 
@@ -32,7 +32,7 @@ const NavBar = () => {
               className={styles.NavLink}
               activeClassName={styles.Active}
             >
-              <i class="fa-solid fa-house"></i>
+              <i className="fa-solid fa-house"></i>
               Home
             </NavLink>
 
@@ -42,7 +42,7 @@ const NavBar = () => {
               className={styles.NavLink}
               activeClassName={styles.Active}
             >
-              <i class="fa-solid fa-right-to-bracket"></i>
+              <i className="fa-solid fa-right-to-bracket"></i>
               Sign in
             </NavLink>
 
@@ -52,11 +52,11 @@ const NavBar = () => {
               className={styles.NavLink}
               activeClassName={styles.Active}
             >
-              <i class="fa-solid fa-user-plus"></i>
+              <i className="fa-solid fa-user-plus"></i>
               Sign up
             </NavLink>
 
-          <i class="fa-solid fa-id-badge"></i>
+          <i className="fa-solid fa-id-badge"></i>
 					<NavDropdown title="Profile" id="basic-nav-dropdown"> 
 						<NavDropdown.Item>My Profile</NavDropdown.Item>
 						<NavDropdown.Item>Add Gear</NavDropdown.Item>
