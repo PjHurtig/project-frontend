@@ -2,9 +2,35 @@ import React from 'react'
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/logo-blue.png'
+import { useCurrentUser } from '../contexts/CurrentUserContext'
 import styles from '../styles/NavBar.module.css'
 
 const NavBar = () => {
+    const currentUser = useCurrentUser()
+    const loggedInIcons = <>{currentUser?.username}</>
+    const loggedOutIcons = 
+    <>
+        <NavLink
+              exact
+              to="/signin"
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+            >
+              <i className="fa-solid fa-right-to-bracket"></i>
+              Sign in
+            </NavLink>
+
+            <NavLink
+              exact
+              to="/signup"
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+            >
+              <i className="fa-solid fa-user-plus"></i>
+              Sign up
+            </NavLink>
+    </>
+
   return (
     <Navbar 
     bg="light" 
@@ -36,28 +62,13 @@ const NavBar = () => {
               Home
             </NavLink>
 
-            <NavLink
-              exact
-              to="/signin"
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-            >
-              <i className="fa-solid fa-right-to-bracket"></i>
-              Sign in
-            </NavLink>
-
-            <NavLink
-              exact
-              to="/signup"
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-            >
-              <i className="fa-solid fa-user-plus"></i>
-              Sign up
-            </NavLink>
+            {currentUser ? loggedInIcons : loggedOutIcons}
 
           <i className="fa-solid fa-id-badge"></i>
-					<NavDropdown title="Profile" id="basic-nav-dropdown"> 
+					<NavDropdown 
+                    title={currentUser?.username} 
+                    id="basic-nav-dropdown"
+                    > 
 						<NavDropdown.Item>My Profile</NavDropdown.Item>
 						<NavDropdown.Item>Add Gear</NavDropdown.Item>
 						<NavDropdown.Item>Calendar</NavDropdown.Item>
