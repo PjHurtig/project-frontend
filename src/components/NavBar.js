@@ -1,13 +1,72 @@
+import axios from 'axios'
 import React from 'react'
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/logo-blue.png'
-import { useCurrentUser } from '../contexts/CurrentUserContext'
+import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext'
 import styles from '../styles/NavBar.module.css'
+import Avatar from './Avatar'
 
 const NavBar = () => {
     const currentUser = useCurrentUser()
-    const loggedInIcons = <>{currentUser?.username}</>
+    const setCurrentUser = useSetCurrentUser();
+
+    const handleSignOut = async () => {
+        try {
+          await axios.post("dj-rest-auth/logout/");
+          setCurrentUser(null);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+    const addPostIcon = (
+        <NavLink
+          className={styles.NavLink}
+          activeClassName={styles.Active}
+          to="/posts/create"
+        >
+          <i className="far fa-plus-square"></i>Add post
+        </NavLink>
+      );
+
+    const loggedInIcons = <>
+
+      <NavDropdown 
+                    title={currentUser?.username} 
+                    id="basic-nav-dropdown"
+                    > 
+                        
+						<NavDropdown.Item>
+                            <NavLink to={`/profiles/${currentUser?.profile_id}`}>
+                            <Avatar 
+                            src={currentUser?.profile_image} 
+                            height={40} 
+                            />
+                            My Profile
+                            </NavLink>
+                        </NavDropdown.Item>
+                        
+
+						<NavDropdown.Item>Add Gear</NavDropdown.Item>
+						<NavDropdown.Item>Calendar</NavDropdown.Item>
+						<NavDropdown.Divider />
+
+                        
+                        <NavDropdown.Item>
+                            <NavLink 
+                            to="/"
+                            onClick={handleSignOut}
+                            >
+                            <i className="fas fa-sign-out-alt"></i>
+                            Sign Out
+                            </NavLink>
+                        </NavDropdown.Item>
+                        
+                        
+					</NavDropdown>
+    
+    </>
     const loggedOutIcons = 
     <>
         <NavLink
@@ -48,33 +107,32 @@ const NavBar = () => {
           </Navbar.Brand>
         </NavLink>
         
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="ml-auto">
+        {currentUser && addPostIcon}
 
-					<NavLink
-              exact
-              to="/"
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-            >
-              <i className="fa-solid fa-house"></i>
-              Home
-            </NavLink>
+		<Navbar.Toggle aria-controls="basic-navbar-nav" />
+			<Navbar.Collapse id="basic-navbar-nav">
+				<Nav className="ml-auto">
 
-            {currentUser ? loggedInIcons : loggedOutIcons}
+                <NavLink
+                exact
+                to="/"
+                className={styles.NavLink}
+                activeClassName={styles.Active}
+                >
+                <i className="fa-solid fa-house"></i>
+                Home
+                </NavLink>
 
-          <i className="fa-solid fa-id-badge"></i>
-					<NavDropdown 
-                    title={currentUser?.username} 
-                    id="basic-nav-dropdown"
-                    > 
-						<NavDropdown.Item>My Profile</NavDropdown.Item>
-						<NavDropdown.Item>Add Gear</NavDropdown.Item>
-						<NavDropdown.Item>Calendar</NavDropdown.Item>
-						<NavDropdown.Divider />
-						<NavDropdown.Item>Log Out</NavDropdown.Item>
-					</NavDropdown>
+                <NavLink
+                className={styles.NavLink}
+                activeClassName={styles.Active}
+                to="/calendar"
+                >
+                <i className="fas fa-stream"></i>Calendar
+                </NavLink>
+
+                {currentUser ? loggedInIcons : loggedOutIcons}
+					
 					</Nav>
 					{/* <Form inline>
 					<FormControl type="text" placeholder="Search" className="mr-sm-2" />
