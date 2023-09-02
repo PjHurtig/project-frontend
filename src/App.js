@@ -14,6 +14,7 @@ import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import GearListCreateForm from "./pages/gearlists/GearListCreateForm";
+import GearListPage from "./pages/gearlists/GearListPage";
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
               <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />}/>
               <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />}/>
               <Route exact path="/gearlists/create" render={() => <GearListCreateForm />} />
+              <Route exact path="/gearlists/:id" render={() => <GearListPage />} />
               <Route render={() => <p>Page not found!</p>} />
 
             </Switch>

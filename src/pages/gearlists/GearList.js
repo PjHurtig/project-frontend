@@ -7,18 +7,19 @@ import Avatar from "../../components/Avatar";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { axiosRes } from "../../api/axiosDefaults";
 
-const Post = (props) => {
+const GearList = (props) => {
   const {
     id,
     owner,
     profile_id,
     profile_image,
-    comments_count,
+    gearitems_count,
     title,
-    content,
+    description,
     image,
     updated_at,
-    postPage,
+    gearListPage,
+    category,
   } = props;
   console.log(props);
 
@@ -27,12 +28,12 @@ const Post = (props) => {
   const history = useHistory();
 
   const handleEdit = () => {
-    history.push(`/posts/${id}/edit`);
+    history.push(`/gearlists/${id}/edit`);
   };
 
   const handleDelete = async () => {
     try {
-      await axiosRes.delete(`/posts/${id}/`);
+      await axiosRes.delete(`/gearlists/${id}/`);
       history.goBack();
     } catch (err) {
       console.log(err);
@@ -49,7 +50,7 @@ const Post = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && postPage && (
+            {is_owner && gearListPage && (
               <MoreDropdown
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
@@ -58,22 +59,22 @@ const Post = (props) => {
           </div>
         </Media>
       </Card.Body>
-      <Link to={`/posts/${id}`}>
+      <Link to={`/gearlists/${id}`}>
         <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {content && <Card.Text>{content}</Card.Text>}
+      {title && <Card.Title className="text-center">{title} - {category}</Card.Title>}
+        {description && <Card.Text>{description}</Card.Text>}
         <div className={styles.PostBar}>
           
-          <Link to={`/posts/${id}`}>
+          <Link to={`/gearlists/${id}`}>
             <i className="far fa-comments" />
           </Link>
-          {comments_count}
+          {gearitems_count}
         </div>
       </Card.Body>
     </Card>
   );
 };
 
-export default Post;
+export default GearList;

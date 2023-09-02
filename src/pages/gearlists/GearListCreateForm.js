@@ -23,15 +23,14 @@ import { useRedirect } from "../../hooks/useRedirect";
 function GearListCreateForm() {
     useRedirect('loggedOut')
   const [errors, setErrors] = useState({});
-  const [listtype, setListType] = useState({
-    category: "listtype",
-  });
-  const [postData, setPostData] = useState({
+  const [listType, setListType] = useState("");
+
+  const [gearListData, setGearListData] = useState({
     title: "",
     description: "",
     image: "",
   });
-  const { title, description, image, category } = postData;
+  const { title, description, image } = gearListData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -43,13 +42,12 @@ function GearListCreateForm() {
   ];
   
   const handleListTypeChange = (event) => {
-    setListType({
-    });
+    setListType(event.target.value);
   };
 
   const handleChange = (event) => {
-      setPostData({
-        ...postData,
+      setGearListData({
+        ...gearListData,
         [event.target.name]: event.target.value,
       });
     }
@@ -58,8 +56,8 @@ function GearListCreateForm() {
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
-      setPostData({
-        ...postData,
+      setGearListData({
+        ...gearListData,
         image: URL.createObjectURL(event.target.files[0]),
       });
     }
@@ -71,6 +69,7 @@ function GearListCreateForm() {
 
     formData.append("title", title);
     formData.append("description", description);
+    formData.append("category", listType);
     formData.append("image", imageInput.current.files[0]);
 
     try {
@@ -90,7 +89,7 @@ function GearListCreateForm() {
     <Form.Label>Select a category</Form.Label>
     <Form.Control 
     as="select"
-    value={listtype}
+    value={listType}
     onChange={handleListTypeChange}
     >
       {gearListCategories.map((category) => (
