@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import GearList from "./GearList";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import GearItemCreateForm from "../gearitems/GearItemCreateForm";
 
 
 function GearListPage() {
@@ -35,6 +36,14 @@ function GearListPage() {
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popular profiles for mobile</p>
         <GearList {...gearList.results[0]} setGearList={setGearList} gearListPage />
+        {currentUser && (
+          <GearItemCreateForm
+            gearList={id}
+            setGearList={setGearList}
+            profileImage={profile_image}
+            profile_id={currentUser.profile_id}
+          />
+        )}
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         Popular profiles for desktop
