@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-
-
-
+import useIsSmallScreen from '../../hooks/useIsSmallScreen';
 
 const EventCalendar = () => {
   const [events, setEvents] = useState([]);
   const history = useHistory();
+  const isSmallScreen = useIsSmallScreen();
+  const calendarRef = useRef()
 
   const onEventClick = (eventClickInfo) => {
     const eventId = eventClickInfo.event.id;
@@ -29,13 +29,20 @@ const EventCalendar = () => {
         return '#606c38'; 
     }
   };
-  
-  
+
+  useEffect(() => {
+    if (isSmallScreen){
+      calendarRef.current.getApi().changeView('dayGridWeek')
+    }
+    else {
+      calendarRef.current.getApi().changeView('dayGridMonth')
+    }
+  },[isSmallScreen])
   
   useEffect(() => {
     axios.get('/events/')
       .then(response => {
-        console.log('response:', response.data.results);
+
   
         const eventsData = response.data.results.map(event => ({
           id: event.id,
@@ -47,16 +54,17 @@ const EventCalendar = () => {
         setEvents(eventsData);
       })
       .catch(error => {
-        console.error('Error fetching events:', error);
+        console.error('Error fetching events:', error); 
       });
-  }, []);
+  },[]);
 
   return (
-
+    <>
         <FullCalendar
         plugins={[dayGridPlugin]}
-        initialView="dayGridWeek"
+        initialView='dayGridWeek'
         events={events}
+        ref={calendarRef}
         eventClick={onEventClick}
         eventTimeFormat={{
             hour: 'numeric',
@@ -64,6 +72,8 @@ const EventCalendar = () => {
             hour12: false, 
         }}
         />
+    </>
+        
 
   );
 };
