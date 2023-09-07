@@ -34,7 +34,6 @@ const NavBar = () => {
       <>
         <Button
           className={styles.NavLink}
-          activeClassName={styles.Active}
           onClick={() => setShow(true)}
         >
           <i className="far fa-plus-square"></i> Post
@@ -42,14 +41,12 @@ const NavBar = () => {
 
         <NavLink
         className={styles.NavLink}
-        activeClassName={styles.Active}
         to="/gearlists/create"
       >
         <i className="far fa-plus-square"></i> Gear
       </NavLink>
       <NavLink
         className={styles.NavLink}
-        activeClassName={styles.Active}
         to="/events/create"
       >
         <i className="far fa-plus-square"></i> Event
