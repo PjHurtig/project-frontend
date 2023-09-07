@@ -15,6 +15,10 @@ import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import GearListCreateForm from "./pages/gearlists/GearListCreateForm";
 import GearListPage from "./pages/gearlists/GearListPage";
+import CalendarPage from "./pages/calendars/CalendarPage";
+import EventCreateForm from "./pages/events/EventCreateForm";
+import EventPage from "./pages/events/EventPage";
+import ProfilePostsPage from "./pages/posts/ProfilePostsPage";
 
 function App() {
 
@@ -39,8 +43,12 @@ function App() {
               <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />}/>
               <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />}/>
               <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />}/>
+              <Route exact path="/profiles/:id/posts" render={() => <ProfilePostsPage />}/>
               <Route exact path="/gearlists/create" render={() => <GearListCreateForm />} />
               <Route exact path="/gearlists/:id" render={() => <GearListPage />} />
+              <Route exact path="/calendar" render={() => <CalendarPage />} />
+              <Route exact path="/events/create" render={() => <EventCreateForm />} />
+              <Route exact path="/events/:id" render={() => <EventPage />} />
               <Route render={() => <p>Page not found!</p>} />
 
             </Switch>
