@@ -1,0 +1,9 @@
+.Event {
+    background-color: #ffffff;
+    border: 1px solid #dadadf;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
