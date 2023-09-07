@@ -93,24 +93,32 @@ function EventCreateForm() {
   };
 
   const listField = (
-
-    <Form.Group controlId="listtype">
-    <Form.Label>Select a category</Form.Label>
-    <Form.Control 
-    as="select"
-    value={listType}
-    onChange={handleListTypeChange}
-    >
-      {eventCategories.map((category) => (
-            <option key={category.value} value={category.value}>
-              {category.label}
-            </option>
-            ))}
-    </Form.Control>
-  </Form.Group>
-  )
+    <div>
+      <Form.Group controlId="listtype">
+        <Form.Label>Select a category</Form.Label>
+          <Form.Control 
+            as="select"
+            value={listType}
+            name="category"
+            onChange={handleListTypeChange}
+            >
+            {eventCategories.map((category) => (
+              <option key={category.value} value={category.value}>
+                {category.label}
+              </option>
+              ))}
+          </Form.Control>
+      </Form.Group>
+      {errors?.category?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+  </div>
+  );
 
   const textFields = (
+
     <div className="text-center">
       <Form.Group>
         <Form.Label>Title</Form.Label>
@@ -127,17 +135,22 @@ function EventCreateForm() {
         </Alert>
       ))}
 
-        
-            <Form.Group>
-              <Form.Label>Date</Form.Label>
-              <DatePicker
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-                showTimeInput
-                dateFormat="yyyy-MM-dd HH:mm:ss"
-                timeFormat="HH:mm:ss"
-              />
-        </Form.Group>
+      <Form.Group>
+        <Form.Label>Date</Form.Label>
+        <DatePicker
+        selected={startDate}
+        onChange={(date) => setStartDate(date)}
+        showTimeInput
+        name="start_time"
+        dateFormat="yyyy-MM-dd HH:mm:ss"
+        timeFormat="HH:mm:ss"
+        />
+      </Form.Group>
+      {errors?.start_time?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Description</Form.Label>
@@ -149,7 +162,7 @@ function EventCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
-      {errors?.content?.map((message, idx) => (
+      {errors?.description?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
@@ -161,9 +174,14 @@ function EventCreateForm() {
       >
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+
+      <Button 
+      className={`${btnStyles.Button} ${btnStyles.Blue}`} 
+      type="submit"
+      >
         create
       </Button>
+
     </div>
   );
 
@@ -174,12 +192,14 @@ function EventCreateForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
+
             <Form.Group className="text-center">
               {image ? (
                 <>
                   <figure>
                     <Image className={appStyles.Image} src={image} rounded />
                   </figure>
+
                   <div>
                     <Form.Label
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
@@ -189,7 +209,9 @@ function EventCreateForm() {
                     </Form.Label>
                   </div>
                 </>
+
               ) : (
+
                 <Form.Label
                   className="d-flex justify-content-center"
                   htmlFor="image-upload"
@@ -199,6 +221,7 @@ function EventCreateForm() {
                     message="Click or tap to upload an image"
                   />
                 </Form.Label>
+
               )}
 
               <Form.File
