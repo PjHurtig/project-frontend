@@ -38,6 +38,8 @@ function ProfilePage() {
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
+  const [activeButton, setActiveButton] = useState('posts');
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,6 +47,7 @@ function ProfilePage() {
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
             axiosReq.get(`/posts/?owner__profile=${id}`),
+            axiosReq.get(`/events/?owner__profile=${id}`),
           ]);
         setProfileData((prevState) => ({
           ...prevState,
@@ -111,12 +114,45 @@ function ProfilePage() {
     </>
   );
 
+  const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName);
+  };
+
+
   const mainProfilePosts = (
     <>
       <hr />
-      <p className="text-center">{profile?.owner}'s posts</p>
+      <div className={styles.buttonContainer}>
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Black}`}
+          onClick={() => handleButtonClick('posts')}
+          variant={activeButton === 'posts' ? 'primary' : 'secondary'} 
+        >
+          {profile?.owner}'s posts
+        </Button>
+
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Black}`}
+          onClick={() => handleButtonClick('events')}
+          variant={activeButton === 'events' ? 'primary' : 'secondary'} 
+        >
+          {profile?.owner}'s events
+        </Button>
+
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Black}`}
+          onClick={() => handleButtonClick('gearlists')}
+          variant={activeButton === 'gearlists' ? 'primary' : 'secondary'} 
+        >
+          {profile?.owner}'s gearlists
+        </Button>
+      </div>
+
       <hr />
-      {profilePosts.results.length ? (
+
+      {activeButton === 'posts' && (
+        <>
+        {profilePosts.results.length ? (
         <InfiniteScroll
           children={profilePosts.results.map((post) => (
             <Post key={post.id} {...post} setPosts={setProfilePosts} />
@@ -132,6 +168,16 @@ function ProfilePage() {
           message={`No results found, ${profile?.owner} hasn't posted yet.`}
         />
       )}
+        </>
+      )}
+      {activeButton === 'events' && (
+        <h1>events</h1>
+      )}
+
+      {activeButton === 'gearlists' && (
+        <h1>geasrlists</h1>
+      )}
+
     </>
   );
 
