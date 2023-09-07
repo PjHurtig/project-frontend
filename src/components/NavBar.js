@@ -1,12 +1,13 @@
 import axios from 'axios'
-import React from 'react'
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Button, Container, Modal, Nav, Navbar} from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/logo-blue.png'
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext'
 import styles from '../styles/NavBar.module.css'
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle'
 import Avatar from './Avatar'
+import PostCreateForm from '../pages/posts/PostCreateForm'
 
 const NavBar = () => {
     const currentUser = useCurrentUser()
@@ -23,40 +24,49 @@ const NavBar = () => {
         }
       };
 
+      const [show, setShow] = useState(false)
+
+      const handleClose = () => {
+        setShow(false)
+      }
+
     const addPostIcon = (
-        <NavLink
+      <>
+        <Button
           className={styles.NavLink}
           activeClassName={styles.Active}
-          to="/posts/create"
+          onClick={() => setShow(true)}
         >
-          <i className="far fa-plus-square"></i>Add post
-        </NavLink>
+          <i className="far fa-plus-square"></i> Post
+        </Button>
+
+        <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/gearlists/create"
+      >
+        <i className="far fa-plus-square"></i> Gear
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/events/create"
+      >
+        <i className="far fa-plus-square"></i> Event
+      </NavLink>
+      </>
       );
 
     const loggedInIcons = <>
-
-      <NavDropdown 
-        title={currentUser?.username} 
-        id="basic-nav-dropdown"
-        > 
             
-            <NavDropdown.Item>
                 <NavLink to={`/profiles/${currentUser?.profile_id}`}>
                 <Avatar 
                 src={currentUser?.profile_image} 
                 height={40} 
                 />
-                My Profile
+                my profile
                 </NavLink>
-            </NavDropdown.Item>
-            
-
-            <NavDropdown.Item>Add Gear</NavDropdown.Item>
-            <NavDropdown.Item>Calendar</NavDropdown.Item>
-            <NavDropdown.Divider />
-
-            
-            <NavDropdown.Item>
+                        
                 <NavLink 
                 to="/"
                 onClick={handleSignOut}
@@ -64,10 +74,7 @@ const NavBar = () => {
                 <i className="fas fa-sign-out-alt"></i>
                 Sign Out
                 </NavLink>
-            </NavDropdown.Item>
-            
-            
-        </NavDropdown>
+
     
     </>
     const loggedOutIcons = 
@@ -94,6 +101,7 @@ const NavBar = () => {
     </>
 
   return (
+    <>
     <Navbar 
     expanded={expanded}
     bg="light" 
@@ -135,19 +143,33 @@ const NavBar = () => {
                 activeClassName={styles.Active}
                 to="/calendar"
                 >
-                <i className="fas fa-stream"></i>Calendar
+                <i className="fas fa-calendar"></i>Calendar
                 </NavLink>
 
                 {currentUser ? loggedInIcons : loggedOutIcons}
 					
 					</Nav>
-					{/* <Form inline>
-					<FormControl type="text" placeholder="Search" className="mr-sm-2" />
-					<Button variant="outline-success">Search</Button>
-					</Form> */}
 				</Navbar.Collapse>
 			</Container>
     </Navbar>
+    
+     <Modal show={show} onHide={handleClose} size='lg'>
+     <Modal.Header closeButton>
+       <Modal.Title>Modal heading</Modal.Title>
+     </Modal.Header>
+     <Modal.Body>
+      <PostCreateForm />
+     </Modal.Body>
+     <Modal.Footer>
+       <Button variant="secondary" onClick={handleClose}>
+         Close
+       </Button>
+       <Button variant="primary" onClick={handleClose}>
+         Save Changes
+       </Button>
+     </Modal.Footer>
+   </Modal>
+   </>
   )
 }
 
