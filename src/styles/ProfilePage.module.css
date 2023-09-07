@@ -11,3 +11,17 @@
       height: 250px;
     }
   }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .buttonContainer > * {
+    padding: 8px;
+    background-color: #1f6c63;
+    border-radius: 50px;
+    cursor: pointer;
+  }
