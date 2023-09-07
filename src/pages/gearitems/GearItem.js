@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Media } from "react-bootstrap";
+import { Accordion, Button, Card, Media } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { MoreDropdown } from "../../components/MoreDropdown";
@@ -48,34 +48,45 @@ const GearItem = (props) => {
   
   return (
     <>
-      <hr />
-      <Media>
-        <Link to={`/profiles/${profile_id}`}>
-          <Avatar src={image} />
-        </Link>
-        <Media.Body className="align-self-center ml-2">
+      <Accordion defaultActiveKey="1">
+        <Card>
+          <Accordion.Toggle as={Card.Header} eventKey="0">
+          <i className="fa-solid fa-chevron-down"></i>
           <span className={styles.Owner}>{name}</span>
           <span className={styles.Date}>{updated_at}</span>
-          {showEditForm ? (
-            <GearItemEditForm
-              id={id}
-              profile_id={profile_id}
-              about={about}
-              profileImage={profile_image}
-              setGearItems={setGearItems}
-              setShowEditForm={setShowEditForm}
-            />
-          ) : (
-            <p>{about}</p>
-          )}
-        </Media.Body>
-        {is_owner && !showEditForm && (
-          <MoreDropdown
-            handleEdit={() => setShowEditForm(true)}
-            handleDelete={handleDelete}
-          />
-        )}
-      </Media>
+          </Accordion.Toggle>
+          <Accordion.Collapse eventKey="0">
+            <Card.Body>
+              <Card.Img variant="top-left" src={image} />
+
+                {showEditForm ? (
+                  <GearItemEditForm
+                    id={id}
+                    profile_id={profile_id}
+                    about={about}
+                    name={name}
+                    profileImage={profile_image}
+                    setGearItems={setGearItems}
+                    setShowEditForm={setShowEditForm}
+                  />
+                ) : (
+                  <Card.Text>
+                    {about}
+                  </Card.Text>
+                )}
+              
+
+              {is_owner && !showEditForm && (
+                <MoreDropdown
+                  handleEdit={() => setShowEditForm(true)}
+                  handleDelete={handleDelete}
+                />
+              )}
+
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>
+      </Accordion>
     </>
   );
 };
