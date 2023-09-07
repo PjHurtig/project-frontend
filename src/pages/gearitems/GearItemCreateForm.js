@@ -2,10 +2,14 @@ import React, { useState } from "react";
 
 import Form from "react-bootstrap/Form";
 
-import styles from "../../styles/CommentCreateEditForm.module.css";
+import styles from "../../styles/GearItemCreateEditForm.module.css";
 import { axiosRes } from "../../api/axiosDefaults";
+import { useRedirect } from "../../hooks/useRedirect";
+import { Alert } from "react-bootstrap";
 
 function GearItemCreateForm(props) {
+    useRedirect('loggedOut')
+  const [errors, setErrors] = useState({});
   const { gearList, setGearList, setGearItems } = props;
 
   const [formData, setFormData] = useState({
@@ -65,11 +69,17 @@ function GearItemCreateForm(props) {
         image: "",
       });
     } catch (err) {
-      console.error(err);
-    }
+        console.log(err);
+        if (err.response?.status !== 401) {
+          setErrors(err.response?.data);
+        }
+      }
   };
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form 
+    onSubmit={handleSubmit}
+    className={styles.FormHead}
+    >
     <h3>Add Gear Item:</h3>
         <Form.Group>
             <Form.Control 
@@ -79,6 +89,11 @@ function GearItemCreateForm(props) {
             onChange={handleInputChange} 
             />
         </Form.Group>
+        {errors?.name?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+          {message}
+          </Alert>
+        ))}
     
         <Form.Group>
             <Form.Label></Form.Label>
@@ -91,13 +106,26 @@ function GearItemCreateForm(props) {
             rows={3} 
             />
         </Form.Group>
-        <Form.File
+        {errors?.about?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+          {message}
+          </Alert>
+        ))}
+
+        <Form.Group>
+          <Form.File
             name="image"
             label="Upload Image"
             onChange={handleInputChange}
             accept="image/*"
-        />
-        
+          />
+        </Form.Group>
+        {errors?.image?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+
         <button
             className={`${styles.Button} btn d-block ml-auto`}
             disabled={!name.trim() || !about.trim()}
