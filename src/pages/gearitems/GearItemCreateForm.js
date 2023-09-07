@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
 
 import styles from "../../styles/CommentCreateEditForm.module.css";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -63,49 +62,49 @@ function GearItemCreateForm(props) {
       setFormData({
         name: "",
         about: "",
-        image: null,
+        image: "",
       });
     } catch (err) {
       console.error(err);
     }
   };
   return (
-    <Form className="mt-2" onSubmit={handleSubmit}>
-      <Form.Group>
-        <InputGroup>
-          <Form.Control
-            className={styles.Form}
+    <Form onSubmit={handleSubmit}>
+    <h3>Add Gear Item:</h3>
+        <Form.Group>
+            <Form.Control 
             placeholder="Name..."
             name="name"
             value={name}
-            onChange={handleInputChange}
-          />
-
-          <Form.Control
-            className={styles.Form}
+            onChange={handleInputChange} 
+            />
+        </Form.Group>
+    
+        <Form.Group>
+            <Form.Label></Form.Label>
+            <Form.Control 
             placeholder="About..."
             name="about"
             value={about}
             onChange={handleInputChange}
-            rows={2}
-          />
-
-          <Form.File
-            className={styles.Form}
+            as="textarea" 
+            rows={3} 
+            />
+        </Form.Group>
+        <Form.File
             name="image"
             label="Upload Image"
             onChange={handleInputChange}
             accept="image/*"
-          />
-        </InputGroup>
-      </Form.Group>
-      <button
-        className={`${styles.Button} btn d-block ml-auto`}
-        disabled={!name.trim() || !about.trim()}
-        type="submit"
-      >
-        Add
-      </button>
+        />
+        
+        <button
+            className={`${styles.Button} btn d-block ml-auto`}
+            disabled={!name.trim() || !about.trim()}
+            type="submit"
+        >
+            Add
+        </button>
     </Form>
   );
 }
