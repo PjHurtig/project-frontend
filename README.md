@@ -208,7 +208,7 @@ Initial wireframe for mobile with [Balsamiq](https://balsamiq)
 
 The project was planned and implemented following agile methodology principles. GitHub Projects was used to manage and document this process.
 
-The GitHub project can be viewed here: [Project]()
+The GitHub project can be viewed here: [Project](https://github.com/users/PjHurtig/projects/7)
 
 Following MoSCoW Priortisation principles, each User Story was assigned a tag from one of the following:
 
