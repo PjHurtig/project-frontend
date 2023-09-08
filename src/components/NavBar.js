@@ -1,13 +1,13 @@
 import axios from 'axios'
-import React, { useState } from 'react'
-import { Button, Container, Modal, Nav, Navbar} from 'react-bootstrap'
+import React from 'react'
+import { Container, Nav, Navbar} from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/logo-blue.png'
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext'
 import styles from '../styles/NavBar.module.css'
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle'
 import Avatar from './Avatar'
-import PostCreateForm from '../pages/posts/PostCreateForm'
+
 
 const NavBar = () => {
     const currentUser = useCurrentUser()
@@ -24,20 +24,15 @@ const NavBar = () => {
         }
       };
 
-      const [show, setShow] = useState(false)
-
-      const handleClose = () => {
-        setShow(false)
-      }
 
     const addPostIcon = (
       <>
-        <Button
-          className={styles.NavLink}
-          onClick={() => setShow(true)}
-        >
-          <i className="far fa-plus-square"></i> Post
-        </Button>
+        <NavLink
+        className={styles.NavLink}
+        to="/posts/create"
+      >
+        <i className="far fa-plus-square"></i> Posts
+      </NavLink>
 
         <NavLink
         className={styles.NavLink}
@@ -112,7 +107,7 @@ const NavBar = () => {
             alt='logo' 
             height='45' 
             />
-            Republic
+            HikeBikeClimb
           </Navbar.Brand>
         </NavLink>
         
@@ -149,23 +144,6 @@ const NavBar = () => {
 				</Navbar.Collapse>
 			</Container>
     </Navbar>
-    
-     <Modal show={show} onHide={handleClose} size='lg'>
-     <Modal.Header closeButton>
-       <Modal.Title>Modal heading</Modal.Title>
-     </Modal.Header>
-     <Modal.Body>
-      <PostCreateForm />
-     </Modal.Body>
-     <Modal.Footer>
-       <Button variant="secondary" onClick={handleClose}>
-         Close
-       </Button>
-       <Button variant="primary" onClick={handleClose}>
-         Save Changes
-       </Button>
-     </Modal.Footer>
-   </Modal>
    </>
   )
 }
