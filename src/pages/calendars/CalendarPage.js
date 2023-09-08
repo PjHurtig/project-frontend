@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styles  from '../../styles/CalendarPage.module.css'
+
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import axios from 'axios';
@@ -17,7 +17,8 @@ const EventCalendar = () => {
 
     history.push(`/events/${eventId}`);
   };
-
+// get the colors of the dot on the calendar by switch case
+// info from stackoverflow
   const getCategoryColor = (category) => {
     switch (category) {
       case 'bike':
@@ -30,7 +31,7 @@ const EventCalendar = () => {
         return '#606c38'; 
     }
   };
-
+// check to see if scren is small and if so, show week view instead of month
   useEffect(() => {
     if (isSmallScreen){
       calendarRef.current.getApi().changeView('dayGridWeek')
@@ -63,7 +64,7 @@ const EventCalendar = () => {
   return (
     <>
         <FullCalendar
-        className={styles.Main}
+
         plugins={[dayGridPlugin]}
         initialView='dayGridWeek'
         events={events}
