@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import styles  from '../../styles/CalendarPage.module.css'
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import axios from 'axios';
@@ -58,9 +59,11 @@ const EventCalendar = () => {
       });
   },[]);
 
+
   return (
     <>
         <FullCalendar
+        className={styles.Main}
         plugins={[dayGridPlugin]}
         initialView='dayGridWeek'
         events={events}
