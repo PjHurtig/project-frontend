@@ -72,8 +72,6 @@ Developer: Jonatan Hurtig
 
  - HikeBikeClimb is a site for users that likes to hike, ride bikes, and/or climb. The site gives the user tools to create and view events in these categories of sport, and to collect their specific gear in gear lists that they can update as they update their gear, to keep track of and inspire other users that are interested in different gear set ups. A user can also add posts to update the other users on the site about their journey and milestones in these sports.
 
-### Developer Statement
-
 
 
 ---
@@ -434,7 +432,33 @@ Calendar
 
 ## Testing
 
-Please see [Testing](ddd) for detailed description of all testing undertaken during this build
+The site has been successfully tested on these devices available to me:
+
+#### Phones
+
+Huawei mate 20 pro
+
+- Chrome
+- Firefox
+
+Samsung s8
+
+- Chrome
+- Firefox
+
+#### Computers
+
+lenovo ideapad
+
+- Chrome
+- Firefox
+
+
+### Browser Testing
+
+- Chrome
+- Firefox
+
  
 ## Deployment
 
