@@ -1,0 +1,14 @@
+.Main {
+  max-width: none;
+  background-color: antiquewhite;
+}
+
+.MainSmall {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .fc-daygrid-dot-event .fc-event-title {
+    display: none;
+  }
+}
