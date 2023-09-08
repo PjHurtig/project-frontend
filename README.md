@@ -364,16 +364,6 @@ NavBar Mobile Expanded
 
 
 
-#### Profile Edit Page
-
-- This page consists of profile form where loggedin user can update their profile data
-- Profile owner can access this page by clicking on edit profile in their profile page
-- After successful update user is displayed successful message
-
-![Edit Dropdown Mobile](documentation/assets/editdropdown.png)
-![Edit Profile Page](documentation/assets/editprofile.png)
-
-
 
 ### Bugs
 
