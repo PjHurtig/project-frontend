@@ -8,7 +8,6 @@ const UserProfilePosts = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    console.log(id)
     axios.get(`/posts/?owner__profile=${id}`)
       .then((response) => {
         setUserPosts(response.data.results);

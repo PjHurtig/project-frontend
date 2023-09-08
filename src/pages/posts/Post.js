@@ -20,7 +20,7 @@ const Post = (props) => {
     updated_at,
     postPage,
   } = props;
-  console.log(props);
+
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -35,7 +35,7 @@ const Post = (props) => {
       await axiosRes.delete(`/posts/${id}/`);
       history.goBack();
     } catch (err) {
-      console.log(err);
+    //   console.log(err);
     }
   };
 

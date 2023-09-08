@@ -37,9 +37,8 @@ function GearListPage() {
         } else {
           setGearItems({ results: [] });
         }
-        console.log("Received gearItems:", gearItems);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
   

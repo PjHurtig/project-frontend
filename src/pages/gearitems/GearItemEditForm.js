@@ -60,7 +60,7 @@ function GearItemEditForm(props) {
       }));
       setShowEditForm(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
         if (err.response?.status !== 401) {
           setErrors(err.response?.data);
         }

@@ -19,7 +19,7 @@ const Event = (props) => {
     eventPage,
     start_time,
   } = props;
-  console.log(props);
+
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -34,7 +34,7 @@ const Event = (props) => {
       await axiosRes.delete(`/events/${id}/`);
       history.goBack();
     } catch (err) {
-      console.log(err);
+    //   console.log(err);
     }
   };
 

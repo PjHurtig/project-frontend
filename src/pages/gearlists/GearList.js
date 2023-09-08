@@ -36,7 +36,7 @@ const GearList = (props) => {
       await axiosRes.delete(`/gearlists/${id}/`);
       history.goBack();
     } catch (err) {
-      console.log(err);
+    //   console.log(err);
     }
   };
 

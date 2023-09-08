@@ -78,9 +78,7 @@ function EventCreateForm() {
     formData.append("image", imageInput.current.files[0]);
     formData.append("start_time", startDate.toISOString());
     
-    for (const [key, value] of formData.entries()) {
-        console.log(`${key}: ${value}`);
-      }
+
     try {
       const { data } = await axiosReq.post("/events/", formData);
       history.push(`/events/${data.id}`);

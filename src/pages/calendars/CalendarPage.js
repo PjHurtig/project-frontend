@@ -55,7 +55,7 @@ const EventCalendar = () => {
         setEvents(eventsData);
       })
       .catch(error => {
-        console.error('Error fetching events:', error); 
+        // console.error('Error fetching events:', error); 
       });
   },[]);
 
