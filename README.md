@@ -2,9 +2,9 @@
 
 Developer: Jonatan Hurtig
 
-![Mockup image]()
+![Mockup image](https://i.imgur.com/pVaGUw9.png)
 
-[View live website]()
+[View live website](https://project-frontend-pj-2fd2a1043672.herokuapp.com/)
 
 ## Table of Contents
 
@@ -328,7 +328,7 @@ NavBar Mobile Expanded
 
 
 - Navbar consists of Logo image and is displayed in all pages for easy navigation of website
-- Logo and wePbsite name both are links for home page
+- Logo and webbsite name both are links for home page
 - Navbar consists of a links to a signin page, signup page and the calendar for logged out users
 - Authenticated/Signed in user can see additional icons as follows:
   - Add gear/post/event: It opens the create form page for each
