@@ -107,6 +107,7 @@ function GearListCreateForm() {
 
   const textFields = (
     <div className="text-center">
+    <h5>Create Gear List</h5>
       <Form.Group>
         <Form.Label>Title</Form.Label>
         <Form.Control
@@ -151,6 +152,8 @@ function GearListCreateForm() {
   );
 
   return (
+    <>
+    
     <Form onSubmit={handleSubmit}>
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
@@ -163,14 +166,7 @@ function GearListCreateForm() {
                   <figure>
                     <Image className={appStyles.Image} src={image} rounded />
                   </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="image-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
+                  
                 </>
               ) : (
                 <Form.Label
@@ -205,6 +201,7 @@ function GearListCreateForm() {
         </Col>
       </Row>
     </Form>
+    </>
   );
 }
 

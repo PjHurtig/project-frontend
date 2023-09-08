@@ -120,6 +120,7 @@ function EventCreateForm() {
   const textFields = (
 
     <div className="text-center">
+      <h5>Create Event</h5>
       <Form.Group>
         <Form.Label>Title</Form.Label>
         <Form.Control
@@ -200,14 +201,7 @@ function EventCreateForm() {
                     <Image className={appStyles.Image} src={image} rounded />
                   </figure>
 
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="image-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
+                  
                 </>
 
               ) : (
