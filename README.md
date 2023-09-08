@@ -1,102 +1,451 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# HikeBikeClimb
 
-Welcome,
+Developer: Jonatan Hurtig
 
-This is the Code Institute student template for React apps on the Codeanywhere IDE. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.  
-DO NOT use this template if you are using the Gitpod IDE. Use the following command instead:  
-`npx create-react-app . --template git+https://github.com/Code-Institute-Org/cra-template-moments.git --use-npm`
+![Mockup image]()
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **8th August, 2023**
+[View live website]()
 
-## Codeanywhere Reminders
+## Table of Contents
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+0. [About](#about)
 
-To log into the Heroku toolbelt CLI:
+1. [Project Goals](#project-goals)
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+   1. [User Goals](#user-goals)
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+2. [User Experience](#user-experience)
 
----
+   1. [Target Audience](#target-audience)
+   2. [User Requirements and Expectations](#user-requirements-and-expectations)
+   3. [User Stories](#user-stories)
+   4. [Site Owner Stories](#site-owner-stories)
 
-Happy coding!
+3. [Wireframes](#wireframes)
 
-# Getting Started with Create React App
+4. [Technologies Used](#technologies-used)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+   1. [Languages](#languages)
+   2. [Libraries, frameworks and dependencies](#libraries-frameworks-and-dependencies)
+   3. [Tools & Programs](#tools--programs)
 
-## Available Scripts
+5. [Agile Design](#agile-design)
 
-In the project directory, you can run:
+6. [Design](#design)
 
-### `npm install`
+   1. [Colors](#colours)
+   2. [Fonts](#fonts)
 
-Installs the required npm packages.
+7. [Project Structure](#project-structure)
 
-### `npm start`
+   1. [Front End](#front-end)
+   2. [Back End API](#back-end-api)
 
-Runs the app in the development mode.\
-Open port 3000 to view it in the browser.
+8. [Features](#features)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+   1. [Implemented Features](#implemented-features)
+   2. [Features to be Implemented](#features-to-be-implemented)
 
-### `npm test`
+9. [Validation](#validation)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   1. [CSS](#css)
+   2. [Html](#html)
+   3. [Lighthouse](#lighthouse)
+   4. [ESLint](#eslint-validation)
 
-### `npm run build`
+10. [Testing](#testing)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+11. [Deployment](#deployment)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    1. [Deploying in Heroku](#deploying-the-website-in-heroko)
+    2. [Forking of Github repo](#forking-the-github-repository)
+    3. [Cloning the Github repo](#cloning-the-repository-in-github)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+12. [Credits](#credits)
 
-### `npm run eject`
+    1. [Image](#images)
+    2. [Code](#code)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+13. [Thank You](#thank-you)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# About
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+ - HikeBikeClimb is a site for users that likes to hike, ride bikes, and/or climb. The site gives the user tools to create and view events in these categories of sport, and to collect their specific gear in gear lists that they can update as they update their gear, to keep track of and inspire other users that are interested in different gear set ups. A user can also add posts to update the other users on the site about their journey and milestones in these sports.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Developer Statement
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Project Goals
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ - The goal for this project was to create a place for enthusiasts of theese sports to come togehter and share information, inspiration and meet up at events big and small.
 
-### Code Splitting
+Key functionality Goals
+ - comprehensive navigation
+ - User authentication
+ - User profiles with users posts, gearlists and events
+ - CRUD functionality for profiles, events, posts, comments, gear lists and gear items
+ - Filtering of events, posts, gear lists by profile
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### User Goals
 
-### Analyzing the Bundle Size
+ - Ability to create a events, posts and gearlists with items
+ - Add comments to posts
+ - Update or delete content where needed
+ - Filtering events, posts and gearlists by profile
+ 
+## User Experience
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Target Audience
 
-### Making a Progressive Web App
+ - The target audience for HikeBikeClimb is peaople that likes to hike, ride bikes, and/or climb and want tools to extend these interests in to a network of likeminded, .
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### User Requirements and Expectations
 
-### Advanced Configuration
+ - A responsive and visually clean design
+ - Intuitive, efficient navigation 
+ - A purpose-driven application for a specific demografic
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+### User stories
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+ - As a user I want to be able to create posts and comments and also update them so that I kan keep them up to date and standard
+ - As a user I can create events and update them so that I kan keep them up to date and standard
+ - As a user I can create gear lists with gear items and update them so that I kan keep them up to date and standard
+ - As a user I can see other users profiles with their own posts, events and gear lists
 
-### `npm run build` fails to minify
+#### Navigation & Authentication
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ - Navigation: As a user I can view a navbar from every page so that I can navigate easily between pages
+ - Routing: As a user I can navigate through pages quickly so that I can view content seamlessly without page refresh
+ - Authentication - Sign up: As a user I can create a new account so that I can access all the features for signed up users
+ - Authentication - Sign in: As a user I can sign in to the app so that I can access functionality for logged in users
+ - Authentication - Logged in Status: As a user I can tell if I am logged in or not so that I can log in if I need to
+ - Authentication - Refreshing access tokens: As a user I can maintain my logged-in status until I choose to log out so that my user experience is not compromised
+ - Navigation: Conditional rendering - As a logged out user I can see sign in and sign up options so that I can sign in/sign up
+ - Avatar: As a user I can view user's avatars so that I can easily identify users of the application
+
+#### Events
+ - Create Events: As a logged in user I can create events so that other users can see them and attend if they want
+ - View Events in Calendar: As a user I can see the events in the calendar and click on them to go to the detailed view
+ - View Events in Profile pages: As a user I can see all the events that a specific user (including myself) has created on their profile and click on them to go to the detailed view
+
+
+#### Gear Lists and Gear Items
+
+ - Create Gear Lists: As a logged in user I can create gear lists so that i can keep track of my gear and other users can see them
+ - View Gear Lists in Profile pages: As a user I can see all the gear lists with the added gear items that a specific user (including myself) has created on their profile and click on them to go to the detailed view
+ - Add, Delete Edit Gear Items: As a logged in user I can add gear items to my gear lists and edit or delete them to keep them up to date.
+ 
+
+#### Posts and Comments
+ - Posts List: As a user I can see all posts added in the homepage by all users
+ - Create Posts: As a logged in user I can create posts so that other user can see what i am up to
+ - Comments: As a logged in user I can comment on posts, edit or delete them to keep the comments relevant and up to date.
+ - View Posts in Profile pages: As a user I can see all the posts that a specific user (including myself) has created on their profile and click on them to go to the detailed view
+
+#### The Profile Page
+
+
+### Site Owner Stories
+
+ - As a site owner I can provide full access to logged in user so that they can interact with the pages more independently
+ - As a site owner I can restrict the interaction with website so that an unauthorised user cannot make changes in the app
+ - As a site owner I can make sure my site is responsive so that user can view the website in all devices without any problem
+
+
+## Wireframes
+![Desktop wireframe]()
+![Mobile Wireframe]()
+
+
+## Technologies Used
+
+### Languages
+
+- HTML
+- CSS
+- Javascript
+- React
+
+
+### Libraries, frameworks and dependencies
+
+- [Axios](https://axios-http.com/docs/intro) - axios were used for promise-based HTTP. Justification: I used axios to send API requests from the React project to the API and avoid any CORS errors when sending cookies.
+- [JWT](https://jwt.io/) - library to decode out JSON Web token. Justification: I used JWT to prevent unauthenticated user from making extra network requests to refresh their access token. Also used to remove the timestamp from the browser when the user refreshes token expires or the user logs out.
+- [React-Bootstrap 4.6](https://react-bootstrap-v4.netlify.app/) - Justification: I used Bootstrap React library for UI components, styling and responsiveness.
+- [React Infinite Scroll](https://www.npmjs.com/package/react-infinite-scroll-component) - Justification: I used this component to load content (posts/comments) automatically as the user scrolls towards the bottom of the page without having to jump to next/previous page.
+- [React Router](https://v5.reactrouter.com/web/guides/quick-start) - used for dynamic routing. Justification: I used this library to enable the navigation among views of various components and control what the user sees depending on the URL they have accessed in the browser.
+- [ES7 Snippets](https://open-vsx.org/extension/dsznajder/es7-react-js-snippets): this was used for keyboard shortcuts when creating jsx functions
+
+### Tools & Programs
+
+- [Am I Responsive](http://ami.responsivedesign.is/) was used to create the multi-device mock-up at the top of this README.md file
+- [Chrome dev tools](https://developers.google.com/web/tools/chrome-devtools/) was used for debugging of the code and checking site for responsiveness
+- [Cloudinary](https://cloudinary.com/) to store static files
+- [Font Awesome](https://fontawesome.com/) - Icons from Font Awesome were used throughout the site
+- [Google Fonts](https://fonts.google.com/) - import of font for the website
+- [CodeAnyWhere](https://app.codeanywhere.com/) was IDE used for writing code and to push the code to GitHub
+- [GitHub](https://github.com/) was used as a remote repository to store project code
+- Validation:
+- [WC3 Validator](https://validator.w3.org/) was used to validate the html
+- [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/) was used to validate the css
+- [ESLint](https://eslint.org/) used to validate JSX code
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse/) used to validate performance, accessibility, best practice and SEO of the app
+
+
+## Agile design
+
+### About
+
+Agile project management
+
+### User Story Template
+
+- Using Github issues first I created the template for a user story that was later used to create user stories.
+
+
+### Kanban Board
+
+I used a Kanban board to provide visual clarity and task tracking.
+
+
+## Design
+
+### Colours
+
+The colours used in the design were taken from [coolors.co](https://coolors.co/)
+
+![Color Palette]()
+
+
+### Fonts
+
+The font usesd throughout the site is [Poppins](https://fonts.google.com/specimen/Poppins?query=Poppins) from google fonts
+
+
+## Project Structure
+
+### Front-End
+
+#### React
+
+Utilizing React in this project 
+
+
+### Back-End API
+
+#### Django REST Framework
+
+The API for this Front-End application was built with the Django REST Framework. The repository with a README file for the DRF Back-End can be found [here().
+
+##### Back to [top](#table-of-contents)
+
+## Features
+
+### Implemented Features
+
+#### Navigation(Navbar)
+NavBar Logged in
+
+![NavBar Logged in](documentation/assets/navbarloggedin.png)
+
+NavBar Logged out
+
+![NavBar Logged out](documentation/assets/navbarloggedout.png)
+
+NavBar Mobile
+
+![NavBar Mobile](documentation/assets/navbarmobile.png)
+
+NavBar Mobile Expanded
+
+![NavBar Mobile Expanded](documentation/assets/navbarmobileexpanded.png)
+
+
+
+
+
+#### Sign Up Page
+
+
+
+![Signup Page]()
+
+#### Sign In Page
+
+
+
+![Signin Page]()
+
+#### HomePage
+
+
+
+##### Active Profiles (Our Top Users)
+
+
+
+#### Profile Page
+
+
+
+![Profile Desktop]()
+![Profile Mobile]()
+
+
+
+#### Profile Edit Page
+
+
+
+![Edit Dropdown Mobile]()
+![Edit Profile Page]()
+
+
+#### Change Username Page
+
+![Change Username Page](documentation/assets/changeusername.png)
+
+
+#### Change Password Page
+
+
+![Change Password Page]()
+
+### Unresolved Bugs
+
+
+### Future Enhancements
+
+
+##### Search form and filters
+
+
+## Validation
+
+### CSS
+
+- [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/)was used to validate the css in the project.
+
+
+
+### Html
+
+- [WC3 Validator](https://validator.w3.org/) was used to validate the html in the project
+
+
+### Lighthouse
+
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse/) for performance, accessibility,
+
+Home
+
+![Home Lighthouse]
+
+Home after amendments
+
+![Home lighthouse after amendments]
+
+Home Mobile
+
+![Home Lighthouse Mobile]
+Home Mobile after amendments
+
+![Home Lighthouse Mobile after amendments]()
+
+Profile
+![rofile Desktop]()
+
+
+### ESLint Validation
+
+- The JSX code was validated using the ESLint utility.
+
+
+
+## Testing
+
+Please see [Testing]() 
+ 
+## Deployment
+
+### Deploying the website in Heroko
+
+- Before deploying in Heroku, a Procfile was created: Very important for deployment and must be added with capital P. This file instructions Heroku which server to use
+
+#### Login or create an account at Heroku
+
+- Make an account in Heroko and login
+
+#### Creating an app
+
+- Create new app in the top right of the screen and add an app name.
+- Select region
+- Then click "create app".
+
+
+#### Open settings Tab
+
+##### Click on config var
+
+- No key or value was added as it is already connected to API
+
+
+##### Add Buildpacks
+
+- Add python buildpack first
+- Add Nodejs buildpack after that
+
+#### Open Deploy Tab
+
+##### Choose deployment method
+
+- Connect GITHUB
+- Login if prompted
+
+
+##### Connect to Github
+
+- Choose repositories you want to connect
+- Click "Connect"
+
+
+
+##### Automatic and Manual deploy
+
+- Choose a method to deploy
+- After Deploy is clicked it will install various file
+
+
+##### Deployment
+
+- Project was deployed in Heroku
+
+
+
+### Forking the GitHub Repository
+
+1. Go to the GitHub repository
+2. Click on Fork button in top right corner
+3. You will then have a copy of the repository in your own GitHub account.
+4. [GitHub Repository()
+
+### Cloning the repository in GitHub
+
+1. Visit the GitHub page of the website's repository
+2. Click the “Clone” button on top of the page
+3. Click on “HTTPS”
+4. Click on the copy button next to the link to copy it
+5. Open your IDE
+6. Type `git clone <copied URL>` into the terminal
+
+## Credits
+
+### Images
+
+
+### Code
+
+
+
+## Thank You
