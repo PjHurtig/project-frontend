@@ -7,14 +7,13 @@ import { axiosRes } from "../../api/axiosDefaults";
 import styles from "../../styles/GearItemCreateEditForm.module.css";
 
 function GearItemEditForm(props) {
-  const { id, name, about, setShowEditForm, setGearItems, image } = props;
+  const { id, name, about, setShowEditForm, setGearItems } = props;
 
   const [errors, setErrors] = useState({});
   
   const [formAbout, setFormAbout] = useState(about);
   const [formName, setFormName] = useState(name);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [imageURL, setImageURL] = useState(image);
 
     const handleNameChange = (event) => {
     setFormName(event.target.value);
@@ -27,9 +26,6 @@ function GearItemEditForm(props) {
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     setSelectedImage(file);
-  
-    const imageURL = URL.createObjectURL(file);
-    setImageURL(imageURL);
   };
 
   const handleSubmit = async (event) => {
@@ -112,7 +108,6 @@ function GearItemEditForm(props) {
       <Form.Group>
         <Form.File
           name="image"
-          label="Upload Image"
           onChange={handleImageChange}
           accept="image/*"
         />

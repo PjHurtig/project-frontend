@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Accordion, Button, Card, Media } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Avatar from "../../components/Avatar";
+import { Accordion, Card } from "react-bootstrap";
+
 import { MoreDropdown } from "../../components/MoreDropdown";
 import GearItemEditForm from "./GearItemEditForm";
 

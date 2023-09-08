@@ -80,7 +80,7 @@ function GearItemCreateForm(props) {
     onSubmit={handleSubmit}
     className={styles.FormHead}
     >
-    <h3>Add Gear Item:</h3>
+    <h5>Add Gear Item:</h5>
         <Form.Group>
             <Form.Control 
             placeholder="Name..."
@@ -114,8 +114,8 @@ function GearItemCreateForm(props) {
 
         <Form.Group>
           <Form.File
+            id="image-upload"
             name="image"
-            label="Upload Image"
             onChange={handleInputChange}
             accept="image/*"
           />
